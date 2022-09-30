@@ -1,14 +1,17 @@
+import AppState from './js/app/appstate.js';
 import { hex2rgb } from './js/utils/utils.js'
 
 /**
  * Initializes WebGL2 
  * @returns { WebGL2RenderingContext | null } The WebGL2 context or Null
  */
+
+ let gl;
+
 function initGl( )
 {
-
-    throw '"initGl" not implemented' 
-
+    // Call checkKey whenever a key is pressed
+    return gl = canvas.getContext('webgl2');
 }
 
 
@@ -26,7 +29,17 @@ function initGl( )
  */
 function clearCanvas( gl, app_state )
 {
-    throw '"clearCanvas" not implemented' 
+    //throw '"clearCanvas" not implemented'
+    if(app_state.getState('Canvas Color') == 'Aggie Blue'){
+      gl.clearColor(hex2rgb('022851')[0], hex2rgb('022851')[1], hex2rgb('022851')[2], 0.8);
+    } else if(app_state.getState('Canvas Color') == 'Aggie Gold'){
+      gl.clearColor(hex2rgb('FFBF00')[0], hex2rgb('FFBF00')[1], hex2rgb('FFBF00')[2], 0.8);
+    }
+    
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.viewport(0, 0, 0, 0);
+
+
 }
 
 
